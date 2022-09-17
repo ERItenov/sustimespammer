@@ -6,6 +6,7 @@ Den eneste begrænsning er på tiden, der går mellem at åbne fanen til, at pro
 Du skal have python installeret
 
 Man skal have webdriver-manager (ikke webdrivermanager) installeret
-bare kør ```pip install webdriver-manager``` i cmd/terminal, eller brug din UI til at installere det hvis du har en fancy IDE som f. eks. PyCharm
+bare kør ```pip install webdriver-manager``` i cmd/terminal, eller brug din UI til at installere det hvis du har en fancy IDE som f. eks. PyCharm. <br />
+
 Man skal også have selenium installeret:
 ```pip install selenium```
