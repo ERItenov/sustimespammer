@@ -5,6 +5,7 @@ Den eneste begrænsning er på tiden, der går mellem at åbne fanen til, at pro
 
 # Dependencies
 Du skal have python installeret
+<br />
 Installer python på https://www.python.org/downloads/
 <br />
 Hvis du ikke har selenium og webdriver-manager installeret på din computer, så kør filen '1-gangs_ting' for at installere det. Det fylder legit intet
