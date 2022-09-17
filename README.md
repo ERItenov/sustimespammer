@@ -8,5 +8,5 @@ Du skal have python installeret
 <br />
 Hvis du ikke har selenium og webdriver-manager installeret på din computer, så kør filen '1-gangs_ting' for at installere det. Det fylder legit intet
 
-# Mac & Windows
-Disse filer er blevet repackaged med pyinstaller. De åbner 10 faner med minimalt delay og holder dem åbne i et minut.
+# Mac-download
+Denne fil er blevet repackaged med pyinstaller. Den åbner 10 faner med minimalt delay og holder dem åbne i et minut.
