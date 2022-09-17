@@ -8,14 +8,14 @@ import time
 #######################################################
 #Customizables:
 
-#Hvor lang tid skal fanerne være åbne (sekunder)?
+#Hvor lang tid skal fanerne være åbne (sekunder)? Brug punktum, ikke komma.
 tid = 60
 
 #Hvor mange faner skal åbne?
 faner = 10
 
 
-#delay mellem hver faneåbning (0 slår delay fra)
+#delay mellem hver faneåbning (0 slår delay fra) Brug punktum, ikke komma.
 delay = 0
 
 ###############################################################################
