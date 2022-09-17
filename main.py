@@ -5,9 +5,10 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
 from selenium.webdriver import Keys
 import time
-#######################################################
-#Customizables:
 
+#################
+ #Customizables:
+#################
 #Hvor lang tid skal fanerne være åbne (sekunder)?
 tid = 60
 
