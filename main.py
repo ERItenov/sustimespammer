@@ -3,25 +3,26 @@
 #######################################################
 
 #Hvor lang tid skal fanerne være åbne (sekunder)? Brug punktum, ikke komma.
-tid = 60
+tid = 50
 
 #Hvor mange faner skal åbne?
-faner = 10
+faner = 5
 
 
 #delay mellem hver faneåbning (0 slår delay fra) Brug punktum, ikke komma.
-delay = 0
+delay = 0.5
 
 ###############################################################################
 #Ændr INTET nedenunder denne linje! (Hvis du vil have det til at virke, altså.)
 ###############################################################################
-
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
 from selenium.webdriver import Keys
 import time
+
+final_faner = faner - 1
 
 driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
 #Funktionen til at åbne siden og trykke på knappen
@@ -47,11 +48,11 @@ sus()
 #grunden til, at if else statementet for delay er udenfor funktionen er, at jeg ikke vil spilde
 #så meget som et millisekund af mit amogus tid på at checke en funktion i stedet for at amoguse
 if delay <= 0:
-    for i in range(int(faner)):
+    for i in range(int(final_faner)):
         fane(i)
     time.sleep(tid)
 else:
-    for i in range(int(faner)):
+    for i in range(int(final_faner)):
         fane(i)
         time.sleep(delay)
     time.sleep(tid)
