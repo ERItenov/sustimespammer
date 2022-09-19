@@ -16,7 +16,6 @@ delay = 0
 #Ændr INTET nedenunder denne linje! (Hvis du vil have det til at virke, altså.)
 ###############################################################################
 
-from setuptools import setup
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
