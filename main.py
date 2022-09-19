@@ -1,12 +1,6 @@
-from setuptools import setup
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
-from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.common.by import By
-from selenium.webdriver import Keys
-import time
 #######################################################
 #Customizables:
+#######################################################
 
 #Hvor lang tid skal fanerne være åbne (sekunder)? Brug punktum, ikke komma.
 tid = 60
@@ -21,6 +15,14 @@ delay = 0
 ###############################################################################
 #Ændr INTET nedenunder denne linje! (Hvis du vil have det til at virke, altså.)
 ###############################################################################
+
+from setuptools import setup
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.common.by import By
+from selenium.webdriver import Keys
+import time
 
 driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
 #Funktionen til at åbne siden og trykke på knappen
@@ -48,8 +50,9 @@ sus()
 if delay <= 0:
     for i in range(int(faner)):
         fane(i)
+    time.sleep(tid)
 else:
     for i in range(int(faner)):
         fane(i)
         time.sleep(delay)
-time.sleep(tid)
+    time.sleep(tid)
