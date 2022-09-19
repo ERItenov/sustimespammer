@@ -25,7 +25,7 @@ Download filerne her ved at trykke på den grønne "code" knap øverst til højr
 <br />
 Man kører en python fil ved at:
 <br />
-1) Åbne filen med IDLE. <br />
+1) Åbne filen med IDLE (python). <br />
 2) Trykke på run (øverst i vinduet på windows, øverst på skærmen på mac) <br />
 3) Trykke "run module"
 <br />
