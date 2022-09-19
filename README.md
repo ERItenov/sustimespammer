@@ -10,7 +10,7 @@ Installer python på https://www.python.org/downloads/
 <br />
 Du skal have google Chrome installeret på din computer
 <br />
-Hvis du ikke har selenium og webdriver-manager installeret på din computer, så kør filen '1-gangs_ting' for at installere det. Det fylder legit intet
+Hvis du ikke har selenium og webdriver_manager installeret på din computer, så kør filen '1-gangs_ting' for at installere det. Det fylder legit intet
 
 # Mac-download
 Denne fil er blevet repackaged med pyinstaller. Den åbner 10 faner med minimalt delay og holder dem åbne i et minut.
