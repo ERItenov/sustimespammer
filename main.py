@@ -1,20 +1,19 @@
-#######################################################
-#Customizables:
-#######################################################
+###############################################################################
+#Ændr INTET nedenunder denne linje! (Hvis du vil have det til at virke, altså.)
+###############################################################################
 
 #Hvor lang tid skal fanerne være åbne (sekunder)? Brug punktum, ikke komma.
 tid = 50
 
 #Hvor mange faner skal åbne?
-faner = 5
+faner = int(input('Hvor mange faner skal åbnes?'))
 
 
-#delay mellem hver faneåbning (0 slår delay fra) Brug punktum, ikke komma.
-delay = 0.5
+#delay mellem hver faneåbning i sekunder (0 minimerer delay) Brug punktum, ikke komma. Der er omkring 0.3 sekunders
+#uundgåeligt delay, som man ikke kan slå fra
+delay = int(input('Hvor langt delay skal der være mellem dem? (sekunder). Der er et delay på ca. 0,2 sekunder by default.'))
 
-###############################################################################
-#Ændr INTET nedenunder denne linje! (Hvis du vil have det til at virke, altså.)
-###############################################################################
+
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
@@ -46,7 +45,7 @@ def fane(n):
 sus()
 #loopet til at åbne flere tabs
 #grunden til, at if else statementet for delay er udenfor funktionen er, at jeg ikke vil spilde
-#så meget som et millisekund af mit amogus tid på at checke en funktion i stedet for at amoguse
+#så meget som et millisekund af min amogus-tid på at checke en funktion i stedet for at amoguse
 if delay <= 0:
     for i in range(int(final_faner)):
         fane(i)
