@@ -8,7 +8,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver import Keys
 import time
 
-def sustime(delay, faner):
+def sustime(delay, faner, tid):
     final_faner = faner - 1
 
     print(str(delay - 1))
@@ -43,12 +43,12 @@ def sustime(delay, faner):
     if delay <= 0:
         for i in range(int(final_faner)):
             fane(i)
-        time.sleep(50)
+        time.sleep(tid)
     else:
         for i in range(int(final_faner)):
             fane(i)
             time.sleep(delay)
-        time.sleep(50)
+        time.sleep(tid)
 
 
 class input(QLineEdit):
@@ -65,17 +65,21 @@ class Window(QWidget):
     def __init__(self):
         super().__init__()
         self.resize(300, 300)
-        self.setWindowTitle("sussy")
+        self.setWindowTitle("SusTimeSpammer")
         self.setContentsMargins(20,20,20,20)
 
         self.faner = input("Faner", 20, 50, self)
-        self.delay = input("Forsinkelse (sekunder)", 20, 70, self)
+        self.delay = input("Ekstra forsinkelse (sekunder)", 20, 70, self)
+        self.tid = input("Tid åbent (i sekunder)", 20, 90, self)
 
         button = QPushButton("Start", self)
         button.clicked.connect(self.func)
+        button.clicked.connect(lambda:self.close())
         button.move(200, 150)
     def func(self):
-        sustime(int(self.delay.text()), int(self.faner.text()))
+        self.close()
+        sustime(int(self.delay.text()), int(self.faner.text()), int(self.tid.text()))
+
 
 
 app = QApplication(sys.argv)
