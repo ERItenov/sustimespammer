@@ -11,9 +11,6 @@ import time
 def sustime(delay, faner, tid):
     final_faner = faner - 1
 
-    print(str(delay - 1))
-    print(str(faner - 1))
-
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
 
     # Funktionen til at åbne siden og trykke på knappen
