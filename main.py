@@ -1,5 +1,6 @@
-import PySimpleGUI as sg
-
+import sys
+from PyQt6.QtWidgets import *
+from PyQt6.QtGui import *
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
@@ -7,57 +8,77 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver import Keys
 import time
 
-def sus():
-    driver.get('https://www.sustime.dk')
-    driver.find_element(By.XPATH, '//*[@id="systime"]/div/div[2]/div/div[2]/div/div[3]/button').send_keys(Keys.RETURN)
-
-def fane(n):
-    # definerer navnet på nuværende fane
-    fanenavn = "fane " + str(n)
-    # definerer kommandoen der skal køres som javascript for driveren, laver en ny tab og navngiver den
-    window_open = str("window.open('about:blank', '" + fanenavn + "'" + ');')
-    # kører javascript-kommandoen
-    driver.execute_script(str(window_open))
-    # skifter til det rigtige tab
-    driver.switch_to.window(fanenavn)
-    sus()
-
 def sustime(delay, faner):
-    sus()
     final_faner = faner - 1
+
+    print(str(delay - 1))
+    print(str(faner - 1))
+
+    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+
+    # Funktionen til at åbne siden og trykke på knappen
+    def sus():
+        driver.get('https://www.sustime.dk')
+        driver.find_element(By.XPATH, '//*[@id="systime"]/div/div[2]/div/div[2]/div/div[3]/button').send_keys(
+            Keys.RETURN)
+
+    # laver og åbner ny fane, og åbner sustime i den
+    def fane(n):
+        # definerer navnet på nuværende fane
+        fanenavn = "fane " + str(n)
+        # definerer kommandoen der skal køres som javascript for driveren, laver en ny fane og navngiver den
+        window_open = str("window.open('about:blank', '" + fanenavn + "'" + ');')
+        # kører javascript-kommandoen
+        driver.execute_script(str(window_open))
+        # skifter til det rigtige tab
+        driver.switch_to.window(fanenavn)
+        sus()
+
+    # åbner browseren
+    sus()
+    time.sleep(delay)
+    # loopet til at åbne flere tabs
+    # grunden til, at if else statementet for delay er udenfor funktionen er, at jeg ikke vil spilde
+    # så meget som et millisekund af min amogus-tid på at checke en funktion i stedet for at amoguse
     if delay <= 0:
         for i in range(int(final_faner)):
             fane(i)
-        time.sleep(tid)
+        time.sleep(50)
     else:
         for i in range(int(final_faner)):
             fane(i)
             time.sleep(delay)
-        time.sleep(tid)
+        time.sleep(50)
 
-layout = [
-    [sg.Text("Hvor mange faner?"),
-     sg.In(size=(10, 2), enable_events=True, key='-Times-')
-    ],
-    [
-        sg.Text("Hvor mange sekunders ekstra forsinkelse skal der være?"),
-        sg.In(size=(10, 2), enable_events=True, key='-Delay-')
-    ],
-    [
-        sg.Button("Start", key="--Start--")
-    ]
- ]
 
-window = sg.Window("sustimespammer", layout)
+class input(QLineEdit):
+    def __init__(self, placeholder, xpos, ypos, parent):
+        super().__init__()
+        self.move(int(xpos), int(ypos))
+        self.setPlaceholderText(str(placeholder))
+        self.setParent(parent)
+        self.setValidator(QIntValidator())
+        self.setFixedSize(200, 20)
 
-while True:
-    event, values = window.read()
-    if event == sg.WIN_CLOSED:
-        break
-    if event == '--Start--':
-        driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
-        delay = int(values["-Delay-"])
-        times = int(values["-Times-"])
-        print(str(delay))
-        print(str(times))
-        sustime(delay, times)
+
+class Window(QWidget):
+    def __init__(self):
+        super().__init__()
+        self.resize(300, 300)
+        self.setWindowTitle("sussy")
+        self.setContentsMargins(20,20,20,20)
+
+        self.faner = input("Faner", 20, 50, self)
+        self.delay = input("Forsinkelse (sekunder)", 20, 70, self)
+
+        button = QPushButton("Start", self)
+        button.clicked.connect(self.func)
+        button.move(200, 150)
+    def func(self):
+        sustime(int(self.delay.text()), int(self.faner.text()))
+
+
+app = QApplication(sys.argv)
+window = Window()
+window.show()
+sys.exit(app.exec())
