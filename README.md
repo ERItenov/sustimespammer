@@ -16,7 +16,7 @@ Hvis du ikke har selenium og webdriver_manager installeret på din computer, så
 Denne fil er blevet repackaged med pyinstaller. Den åbner 10 faner med minimalt delay og holder dem åbne i et minut.
 
 # Instruktioner:
-Download og installer python hvis du ikke allerede har det: https://www.python.org/downloads/
+Download og installer python 3.10, hvis du ikke allerede har det: https://www.python.org/downloads/
 <br />
 Download filerne her ved at trykke på den grønne "code" knap øverst til højre, og så download som zip. Udpak alle filerne.
 <br />
