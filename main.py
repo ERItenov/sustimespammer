@@ -1,18 +1,4 @@
-###############################################################################
-#Ændr INTET nedenunder denne linje! (Hvis du vil have det til at virke, altså.)
-###############################################################################
-
-#Hvor lang tid skal fanerne være åbne (sekunder)? Brug punktum, ikke komma.
-tid = 50
-
-#Hvor mange faner skal åbne?
-faner = int(input('Hvor mange faner skal åbnes?'))
-
-
-#delay mellem hver faneåbning i sekunder (0 minimerer delay) Brug punktum, ikke komma. Der er omkring 0.3 sekunders
-#uundgåeligt delay, som man ikke kan slå fra
-delay = int(input('Hvor langt delay skal der være mellem dem? (sekunder). Der er et delay på ca. 0,2 sekunder by default.'))
-
+import PySimpleGUI as sg
 
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
@@ -21,15 +7,10 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver import Keys
 import time
 
-final_faner = faner - 1
-
-driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
-#Funktionen til at åbne siden og trykke på knappen
 def sus():
     driver.get('https://www.sustime.dk')
     driver.find_element(By.XPATH, '//*[@id="systime"]/div/div[2]/div/div[2]/div/div[3]/button').send_keys(Keys.RETURN)
 
-#laver og åbner ny fane, og åbner sustime i den
 def fane(n):
     # definerer navnet på nuværende fane
     fanenavn = "fane " + str(n)
@@ -41,17 +22,42 @@ def fane(n):
     driver.switch_to.window(fanenavn)
     sus()
 
-#åbner browseren
-sus()
-#loopet til at åbne flere tabs
-#grunden til, at if else statementet for delay er udenfor funktionen er, at jeg ikke vil spilde
-#så meget som et millisekund af min amogus-tid på at checke en funktion i stedet for at amoguse
-if delay <= 0:
-    for i in range(int(final_faner)):
-        fane(i)
-    time.sleep(tid)
-else:
-    for i in range(int(final_faner)):
-        fane(i)
-        time.sleep(delay)
-    time.sleep(tid)
+def sustime(delay, faner):
+    sus()
+    final_faner = faner - 1
+    if delay <= 0:
+        for i in range(int(final_faner)):
+            fane(i)
+        time.sleep(tid)
+    else:
+        for i in range(int(final_faner)):
+            fane(i)
+            time.sleep(delay)
+        time.sleep(tid)
+
+layout = [
+    [sg.Text("Hvor mange faner?"),
+     sg.In(size=(10, 2), enable_events=True, key='-Times-')
+    ],
+    [
+        sg.Text("Hvor mange sekunders ekstra forsinkelse skal der være?"),
+        sg.In(size=(10, 2), enable_events=True, key='-Delay-')
+    ],
+    [
+        sg.Button("Start", key="--Start--")
+    ]
+ ]
+
+window = sg.Window("sustimespammer", layout)
+
+while True:
+    event, values = window.read()
+    if event == sg.WIN_CLOSED:
+        break
+    if event == '--Start--':
+        driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+        delay = int(values["-Delay-"])
+        times = int(values["-Times-"])
+        print(str(delay))
+        print(str(times))
+        sustime(delay, times)
