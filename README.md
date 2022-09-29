@@ -20,11 +20,11 @@ Download og installer python 3.10, hvis du ikke allerede har det: https://www.py
 <br />
 Kør følgende kommandoer i din cmd eller terminal:
 <br />
-```pip install --user selenium```
+```pip3.10 install --user selenium```
 <br />
-```pip install --user webdriver-manager```
+```pip3.10 install --user webdriver-manager```
 <br />
-```pip install --user PyQt6```
+```pip3.10 install --user PyQt6```
 <br />
 <br />
 Download filerne her ved at trykke på den grønne "code" knap øverst til højre, og så download som zip. Udpak alle filerne.
