@@ -39,6 +39,4 @@ Man kører en python fil ved at:
 3) Trykke "run module"
 <br />
 <br />
-Når filen er færdig med at køre, så åbn filen "main.py" i IDLE (den ældste version du kan)
-<br />
-Ændr på customizables og kør filen!
+Når filen er færdig med at køre, så åbn filen "main.py" i IDLE (3.10.x)
