@@ -19,9 +19,13 @@ Denne fil er blevet repackaged med pyinstaller. Den åbner 10 faner med minimalt
 Download og installer python 3.10, hvis du ikke allerede har det: https://www.python.org/downloads/
 <br />
 Kør følgende kommandoer i din cmd eller terminal:
-pip install --user selenium
-pip install --user webdriver-manager
-pip install --user PyQt6
+<br />
+```pip install --user selenium```
+<br />
+```pip install --user webdriver-manager```
+<br />
+```pip install --user PyQt6```
+<br />
 <br />
 Download filerne her ved at trykke på den grønne "code" knap øverst til højre, og så download som zip. Udpak alle filerne.
 <br />
